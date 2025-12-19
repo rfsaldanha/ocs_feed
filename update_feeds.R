@@ -40,6 +40,7 @@ fs::file_move(
   path = "feeds/",
   new_path = "/dados/htdocs/shiny.icict.fiocruz.br/"
 )
+fs::dir_create(path = "/dados/home/rfsaldanha/ocs_feed/feeds")
 
 # Save last send time
 saveRDS(object = Sys.time(), file = "last_send_time.rds")
