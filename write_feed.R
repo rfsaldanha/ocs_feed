@@ -27,5 +27,12 @@ write_feed <- function(
   }
 
   # Write the XML document to a file
-  xml2::write_xml(feed, file = paste0("feeds/", entries[[i]]$feed, ".xml"))
+  xml2::write_xml(
+    feed,
+    file = paste0(
+      "/dados/home/rfsaldanha/ocs_feed/feeds/",
+      entries[[i]]$feed,
+      ".xml"
+    )
+  )
 }
