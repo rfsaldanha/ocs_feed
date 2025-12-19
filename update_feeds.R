@@ -50,6 +50,8 @@ res <- purrr::map(.x = entries, .f = write_feed, .progress = TRUE)
 
 # Move feed files to webserver
 cli::cli_alert("Move feed files to webserver dir...")
+fs::file_delete(path = "/dados/htdocs/shiny.icict.fiocruz.br/ocs/feeds/")
+fs::file_create("/dados/htdocs/shiny.icict.fiocruz.br/ocs/feeds/")
 fs::file_move(
   path = "feeds/",
   new_path = "/dados/htdocs/shiny.icict.fiocruz.br/ocs/"
