@@ -1,6 +1,6 @@
 # Setup
-# setwd("/mnt/data/onedrive/projetos/ocs_messenger/")
-setwd("/dados/home/rfsaldanha/ocs_messenger/")
+# setwd("/mnt/data/onedrive/projetos/ocs_feed/")
+setwd("/dados/home/rfsaldanha/ocs_feed/")
 
 source(file = "collector_inmet.R")
 source(file = "write_feed.R")
