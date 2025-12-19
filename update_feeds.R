@@ -1,6 +1,7 @@
 # Setup
-setwd("/mnt/data/onedrive/projetos/ocs_messenger/")
-# setwd("/dados/home/rfsaldanha/ocs_messenger/")
+# setwd("/mnt/data/onedrive/projetos/ocs_messenger/")
+setwd("/dados/home/rfsaldanha/ocs_messenger/")
+
 source(file = "collector_inmet.R")
 source(file = "write_feed.R")
 mun_feeds <- readRDS("mun_feeds.rds")
@@ -35,10 +36,10 @@ entries <- entries |>
 res <- purrr::map(.x = entries, .f = write_feed, .progress = TRUE)
 
 # Move feed files
-# fs::file_move(
-#   path = "feeds/",
-#   new_path = "/dados/htdocs/shiny.icict.fiocruz.br/feed/"
-# )
+fs::file_move(
+  path = "feeds/",
+  new_path = "/dados/htdocs/shiny.icict.fiocruz.br/feed/"
+)
 
 # Save last send time
 saveRDS(object = Sys.time(), file = "last_send_time.rds")
