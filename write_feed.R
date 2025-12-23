@@ -3,14 +3,13 @@ write_feed <- function(
   atom_ns = "http://www.w3.org/2005/Atom",
   feed_url = "example.org",
   site_url = "https://climaesaude.icict.fiocruz.br",
-  title = "Alertas Observatório de Clima e Saúde",
-  subtitle = "LIS/ICICT/Fiocruz"
+  subtitle = "Observatório de Clima e Saúde - LIS/ICICT/Fiocruz"
 ) {
   # Create the root node <feed> with the required namespace
   feed <- xml2::xml_new_root("feed", xmlns = atom_ns)
 
   # Add required feed-level elements
-  xml2::xml_add_child(feed, "title", title)
+  xml2::xml_add_child(feed, "title", paste("Alerta", entries[[1]]$title))
   xml2::xml_add_child(feed, "subtitle", subtitle)
   xml2::xml_add_child(feed, "link", href = site_url)
   xml2::xml_add_child(feed, "link", href = feed_url, rel = "self")
@@ -31,7 +30,7 @@ write_feed <- function(
     feed,
     file = paste0(
       "/dados/home/rfsaldanha/ocs_feed/feeds/",
-      entries[[i]]$feed,
+      entries[[1]]$feed,
       ".xml"
     )
   )
