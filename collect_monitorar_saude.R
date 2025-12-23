@@ -38,11 +38,24 @@ collect_monitorar_saude <- function() {
       identifier = uuid::UUIDgenerate(),
       title = "Alerta de PM2.5",
       message = glue::glue(
-        "Estima-se que nos próximos sete dias o município apresente concentrações de PM 2.5 acima dos valores recomendados pela Organização Mundial da Saúde (OMS) nas seguinte(s) data(s): {dates}.</br>Teste de HTML: <ul>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ul>"
+        "
+        Estima-se que nos próximos sete dias o município apresente concentrações de PM 2.5 acima dos valores recomendados pela Organização Mundial da Saúde (OMS) nas seguinte(s) data(s): {dates}.
+        
+        Recomendações para os serviços de saúde:
+        <ul>
+        <li>Intensificar a vigilância de atendimentos por asma, DPOC, infecções respiratórias e eventos cardiovasculares.</li>
+        <li>Reforçar orientações às equipes da Atenção Primária e serviços de urgência.</li>
+        <li>Avaliar a necessidade de ampliação da capacidade assistencial em períodos prolongados de exposição.</li>
+        <li>Articular ações intersetoriais com meio ambiente e defesa civil, quando aplicável.</li>
+        </ul>
+
+        Recomendações para os serviços de saúde:
+        <ul>
+        <li>Evitar atividades físicas ao ar livre, especialmente crianças, idosos, gestantes e pessoas com doenças respiratórias ou cardíacas.</li>
+        <li>Manter ambientes internos ventilados, evitando exposição direta à fumaça e poeira.</li>
+        <li>Seguir orientações médicas e procurar atendimento em caso de falta de ar, tosse persistente ou piora de sintomas respiratórios.</li>
+        </ul>
+      "
       )
     ) |>
     dplyr::select(identifier, code_muni, title, message)
