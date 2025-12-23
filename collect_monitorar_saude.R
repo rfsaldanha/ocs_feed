@@ -40,7 +40,7 @@ collect_monitorar_saude <- function() {
       message = glue::glue(
         "
         Estima-se que nos próximos sete dias o município apresente concentrações de PM 2.5 acima dos valores recomendados pela Organização Mundial da Saúde (OMS) nas seguinte(s) data(s): {dates}.
-        
+        <br>
         Recomendações para os serviços de saúde:
         <ul>
         <li>Intensificar a vigilância de atendimentos por asma, DPOC, infecções respiratórias e eventos cardiovasculares.</li>
@@ -48,7 +48,7 @@ collect_monitorar_saude <- function() {
         <li>Avaliar a necessidade de ampliação da capacidade assistencial em períodos prolongados de exposição.</li>
         <li>Articular ações intersetoriais com meio ambiente e defesa civil, quando aplicável.</li>
         </ul>
-
+        <br>
         Recomendações para os serviços de saúde:
         <ul>
         <li>Evitar atividades físicas ao ar livre, especialmente crianças, idosos, gestantes e pessoas com doenças respiratórias ou cardíacas.</li>
