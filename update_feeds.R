@@ -6,6 +6,8 @@ cli::cli_alert("Configuring setup environment...")
 # setwd("/mnt/data/onedrive/projetos/ocs_feed/")
 setwd("/dados/home/rfsaldanha/ocs_feed/")
 
+Sys.setlocale("LC_ALL", "pt_BR.UTF-8")
+
 source(file = "collector_inmet.R")
 source(file = "collect_monitorar_saude.R")
 source(file = "write_feed.R")
