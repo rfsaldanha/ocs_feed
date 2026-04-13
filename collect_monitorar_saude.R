@@ -34,8 +34,10 @@ collect_monitorar_saude <- function() {
     dplyr::group_by(code_muni) |>
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
-      code_muni = as.character(code_muni),
       identifier = uuid::UUIDgenerate(),
+      date = Sys.Date(),
+      event = "Qualidade do ar",
+      code_muni = as.character(code_muni),
       title = "Alerta de PM2.5",
       message = glue::glue(
         "Estima-se que nos próximos sete dias o município apresente concentrações de PM 2.5 acima dos valores recomendados pela Organização Mundial da Saúde (OMS) nas seguinte(s) data(s): {dates}.
@@ -61,7 +63,7 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, code_muni, title, message)
+    dplyr::select(identifier, date, event, code_muni, title, message)
 
   # O3
   message_o3 <- dplyr::tbl(con, tb_o3) |>
@@ -82,8 +84,10 @@ collect_monitorar_saude <- function() {
     dplyr::group_by(code_muni) |>
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
-      code_muni = as.character(code_muni),
       identifier = uuid::UUIDgenerate(),
+      date = Sys.Date(),
+      event = "Qualidade do ar",
+      code_muni = as.character(code_muni),
       title = "Alerta de O3",
       message = glue::glue(
         "Estima-se que nos próximos sete dias o município apresente concentrações de O3 (ozônio) acima dos valores recomendados pela Organização Mundial da Saúde (OMS) nas seguinte(s) data(s): {dates}.
@@ -108,7 +112,7 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, code_muni, title, message)
+    dplyr::select(identifier, date, event, code_muni, title, message)
 
   # IQAr
   message_iqar <- dplyr::tbl(con, tb_iqar) |>
@@ -129,8 +133,10 @@ collect_monitorar_saude <- function() {
     dplyr::group_by(code_muni) |>
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
-      code_muni = as.character(code_muni),
       identifier = uuid::UUIDgenerate(),
+      date = Sys.Date(),
+      event = "Qualidade do ar",
+      code_muni = as.character(code_muni),
       title = "Alerta de qualidade do ar (IQAr)",
       message = glue::glue(
         "Estima-se que nos próximos sete dias o município apresente o Índice de Qualidade do Ar (IQAr) com valores acima dos recomendados pelo CONAMA nas seguinte(s) data(s): {dates}.
@@ -155,7 +161,7 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, code_muni, title, message)
+    dplyr::select(identifier, date, event, code_muni, title, message)
 
   # UV
   message_uv <- dplyr::tbl(con, tb_uv) |>
@@ -176,8 +182,10 @@ collect_monitorar_saude <- function() {
     dplyr::group_by(code_muni) |>
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
-      code_muni = as.character(code_muni),
       identifier = uuid::UUIDgenerate(),
+      date = Sys.Date(),
+      event = "Raios ultravioletas",
+      code_muni = as.character(code_muni),
       title = "Alerta de raios ultravioletas",
       message = glue::glue(
         "Estima-se que nos próximos sete dias o município apresente o Índice de Raios Ultravioletas (IUV) com valores acima dos recomendados nas seguinte(s) data(s): {dates}.
@@ -201,7 +209,7 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, code_muni, title, message)
+    dplyr::select(identifier, date, event, code_muni, title, message)
 
   # Temp 35°C
   message_temp_35 <- dplyr::tbl(con, tb_temp) |>
@@ -222,8 +230,10 @@ collect_monitorar_saude <- function() {
     dplyr::group_by(code_muni) |>
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
-      code_muni = as.character(code_muni),
       identifier = uuid::UUIDgenerate(),
+      date = Sys.Date(),
+      event = "Altas temperaturas",
+      code_muni = as.character(code_muni),
       title = "Alerta de temperaturas acima de 35°C",
       message = glue::glue(
         "Estima-se que nos próximos sete dias o município apresente temperaturas iguais ou acima de 35°C nas seguinte(s) data(s): {dates}.
@@ -249,7 +259,7 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, code_muni, title, message)
+    dplyr::select(identifier, date, event, code_muni, title, message)
 
   # Temp 5°C
   message_temp_5 <- dplyr::tbl(con, tb_temp) |>
@@ -270,8 +280,10 @@ collect_monitorar_saude <- function() {
     dplyr::group_by(code_muni) |>
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
-      code_muni = as.character(code_muni),
       identifier = uuid::UUIDgenerate(),
+      date = Sys.Date(),
+      event = "Baixas temperaturas",
+      code_muni = as.character(code_muni),
       title = "Alerta de temperaturas abaixo de 5°C",
       message = glue::glue(
         "Estima-se que nos próximos sete dias o município apresente temperaturas iguais ou abaixo de 5°C nas seguinte(s) data(s): {dates}.
@@ -296,7 +308,7 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, code_muni, title, message)
+    dplyr::select(identifier, date, event, code_muni, title, message)
 
   DBI::dbDisconnect(con)
 

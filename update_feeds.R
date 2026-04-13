@@ -28,7 +28,7 @@ ntfy::ntfy_send(
 cli::cli_alert("Running collectors...")
 
 cli::cli_inform("INMET collector...")
-inmet_entries <- collect_inmet(last_n = 10)
+inmet_entries <- collect_inmet()
 cli::cli_alert_success("INMET collector done!")
 
 cli::cli_inform("MonitorAr Saúde collector...")
@@ -38,7 +38,8 @@ cli::cli_alert_success("MonitorAr Saúde collector done!")
 # Bind all entries
 cli::cli_alert("Binding all entries...")
 entries <- tibble::tibble()
-entries <- dplyr::bind_rows(entries, monitorar_saude_entries, inmet_entries)
+entries <- dplyr::bind_rows(entries, monitorar_saude_entries, inmet_entries) |>
+  dplyr::mutate(date = as.character(date))
 
 if (nrow(entries) == 0) {
   stop("No new entries")

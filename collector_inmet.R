@@ -1,4 +1,4 @@
-collect_inmet <- function(last_n) {
+collect_inmet <- function() {
   # INMET parquet file address
   parquet_url <- "https://inmetalerts.nyc3.digitaloceanspaces.com/inmetalerts.parquet"
 
@@ -14,18 +14,27 @@ collect_inmet <- function(last_n) {
   res <- inmetrss::parse_mun(res, text = TRUE)
 
   # Filter last n entries per municipality
+  # res <- res |>
+  #   dplyr::group_by(mun_codes) |>
+  #   dplyr::arrange(dplyr::desc(sent)) |>
+  #   dplyr::slice_head(n = last_n) |>
+  #   dplyr::ungroup()
+
+  # Filter current alerts
   res <- res |>
-    dplyr::group_by(mun_codes) |>
-    dplyr::arrange(dplyr::desc(sent)) |>
-    dplyr::slice_head(n = last_n) |>
-    dplyr::ungroup()
+    dplyr::filter(Sys.time() >= sent & Sys.time() <= expires)
 
   # Prepare message data
   message_df <- res |>
-    dplyr::mutate(title = "Alerta INMET") |>
-    dplyr::mutate(message = paste(description, instruction)) |>
+    dplyr::mutate(title = glue::glue("Alerta de {tolower(event)} (INMET)")) |>
+    dplyr::mutate(
+      message = paste(description, instruction),
+      date = as.Date(sent),
+    ) |>
     dplyr::select(
       identifier,
+      date,
+      event,
       code_muni = mun_codes,
       title,
       message
