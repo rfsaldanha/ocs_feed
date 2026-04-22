@@ -1,7 +1,6 @@
 collect_inmet <- function() {
   # INMET parquet file address
   parquet_url <- "https://inmetalerts.nyc3.digitaloceanspaces.com/inmetalerts.parquet"
-  # parquet_url <- "~/Downloads/inmetalerts.parquet"
 
   # Read data
   res <- arrow::read_parquet(parquet_url) |>
@@ -31,12 +30,16 @@ collect_inmet <- function() {
     dplyr::mutate(
       message = paste(description, instruction),
       date = sent,
+      category = "Meteorológico"
     ) |>
     dplyr::select(
       identifier,
       date,
+      category,
       event,
       severity,
+      onset,
+      expires,
       code_muni = mun_codes,
       title,
       message

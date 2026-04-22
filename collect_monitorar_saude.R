@@ -28,7 +28,9 @@ collect_monitorar_saude <- function() {
     dplyr::distinct() |>
     dplyr::group_by(code_muni) |>
     dplyr::summarise(
-      dates = list(as.character(format(date, "%d/%m/%Y (%A)")))
+      dates = list(as.character(format(date, "%d/%m/%Y (%A)"))),
+      onset = min(date),
+      expires = max(date)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(code_muni) |>
@@ -36,7 +38,9 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
       date = lubridate::now(),
-      event = "Qualidade do ar",
+      category = "Qualidade do ar",
+      event = "Alta concentração de PM2.5",
+      severity = NA,
       code_muni = as.character(code_muni),
       title = "Alerta de PM2.5",
       message = glue::glue(
@@ -63,7 +67,18 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, date, event, code_muni, title, message)
+    dplyr::select(
+      identifier,
+      date,
+      category,
+      event,
+      severity,
+      onset,
+      expires,
+      code_muni,
+      title,
+      message
+    )
 
   # O3
   message_o3 <- dplyr::tbl(con, tb_o3) |>
@@ -78,7 +93,9 @@ collect_monitorar_saude <- function() {
     dplyr::distinct() |>
     dplyr::group_by(code_muni) |>
     dplyr::summarise(
-      dates = list(as.character(format(date, "%d/%m/%Y (%A)")))
+      dates = list(as.character(format(date, "%d/%m/%Y (%A)"))),
+      onset = min(date),
+      expires = max(date)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(code_muni) |>
@@ -86,7 +103,9 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
       date = lubridate::now(),
-      event = "Qualidade do ar",
+      category = "Qualidade do ar",
+      event = "Alta concentração de O3",
+      severity = NA,
       code_muni = as.character(code_muni),
       title = "Alerta de O3",
       message = glue::glue(
@@ -112,7 +131,18 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, date, event, code_muni, title, message)
+    dplyr::select(
+      identifier,
+      date,
+      category,
+      event,
+      severity,
+      onset,
+      expires,
+      code_muni,
+      title,
+      message
+    )
 
   # IQAr
   message_iqar <- dplyr::tbl(con, tb_iqar) |>
@@ -127,7 +157,9 @@ collect_monitorar_saude <- function() {
     dplyr::distinct() |>
     dplyr::group_by(code_muni) |>
     dplyr::summarise(
-      dates = list(as.character(format(date, "%d/%m/%Y (%A)")))
+      dates = list(as.character(format(date, "%d/%m/%Y (%A)"))),
+      onset = min(date),
+      expires = max(date)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(code_muni) |>
@@ -135,7 +167,9 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
       date = lubridate::now(),
-      event = "Qualidade do ar",
+      category = "Qualidade do ar",
+      event = "Baixa qualidade do ar",
+      severity = NA,
       code_muni = as.character(code_muni),
       title = "Alerta de qualidade do ar (IQAr)",
       message = glue::glue(
@@ -161,7 +195,18 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, date, event, code_muni, title, message)
+    dplyr::select(
+      identifier,
+      date,
+      category,
+      event,
+      severity,
+      onset,
+      expires,
+      code_muni,
+      title,
+      message
+    )
 
   # UV
   message_uv <- dplyr::tbl(con, tb_uv) |>
@@ -176,7 +221,9 @@ collect_monitorar_saude <- function() {
     dplyr::distinct() |>
     dplyr::group_by(code_muni) |>
     dplyr::summarise(
-      dates = list(as.character(format(date, "%d/%m/%Y (%A)")))
+      dates = list(as.character(format(date, "%d/%m/%Y (%A)"))),
+      onset = min(date),
+      expires = max(date)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(code_muni) |>
@@ -184,7 +231,9 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
       date = lubridate::now(),
-      event = "Raios ultravioletas",
+      category = "Meteorológico",
+      event = "Alta incidência de raios UV",
+      severity = NA,
       code_muni = as.character(code_muni),
       title = "Alerta de raios ultravioletas",
       message = glue::glue(
@@ -209,7 +258,18 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, date, event, code_muni, title, message)
+    dplyr::select(
+      identifier,
+      date,
+      category,
+      event,
+      severity,
+      onset,
+      expires,
+      code_muni,
+      title,
+      message
+    )
 
   # Temp 35°C
   message_temp_35 <- dplyr::tbl(con, tb_temp) |>
@@ -224,7 +284,9 @@ collect_monitorar_saude <- function() {
     dplyr::distinct() |>
     dplyr::group_by(code_muni) |>
     dplyr::summarise(
-      dates = list(as.character(format(date, "%d/%m/%Y (%A)")))
+      dates = list(as.character(format(date, "%d/%m/%Y (%A)"))),
+      onset = min(date),
+      expires = max(date)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(code_muni) |>
@@ -232,7 +294,9 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
       date = lubridate::now(),
+      category = "Meteorológico",
       event = "Altas temperaturas",
+      severity = NA,
       code_muni = as.character(code_muni),
       title = "Alerta de temperaturas acima de 35°C",
       message = glue::glue(
@@ -259,7 +323,18 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, date, event, code_muni, title, message)
+    dplyr::select(
+      identifier,
+      date,
+      category,
+      event,
+      severity,
+      onset,
+      expires,
+      code_muni,
+      title,
+      message
+    )
 
   # Temp 5°C
   message_temp_5 <- dplyr::tbl(con, tb_temp) |>
@@ -274,7 +349,9 @@ collect_monitorar_saude <- function() {
     dplyr::distinct() |>
     dplyr::group_by(code_muni) |>
     dplyr::summarise(
-      dates = list(as.character(format(date, "%d/%m/%Y (%A)")))
+      dates = list(as.character(format(date, "%d/%m/%Y (%A)"))),
+      onset = min(date),
+      expires = max(date)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(code_muni) |>
@@ -282,7 +359,9 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
       date = lubridate::now(),
+      category = "Meteorológico",
       event = "Baixas temperaturas",
+      severity = NA,
       code_muni = as.character(code_muni),
       title = "Alerta de temperaturas abaixo de 5°C",
       message = glue::glue(
@@ -308,7 +387,18 @@ collect_monitorar_saude <- function() {
         "
       )
     ) |>
-    dplyr::select(identifier, date, event, code_muni, title, message)
+    dplyr::select(
+      identifier,
+      date,
+      category,
+      event,
+      severity,
+      onset,
+      expires,
+      code_muni,
+      title,
+      message
+    )
 
   DBI::dbDisconnect(con)
 
