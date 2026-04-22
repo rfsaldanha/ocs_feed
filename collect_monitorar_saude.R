@@ -35,7 +35,7 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
-      date = Sys.Date(),
+      date = lubridate::now(),
       event = "Qualidade do ar",
       code_muni = as.character(code_muni),
       title = "Alerta de PM2.5",
@@ -85,7 +85,7 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
-      date = Sys.Date(),
+      date = lubridate::now(),
       event = "Qualidade do ar",
       code_muni = as.character(code_muni),
       title = "Alerta de O3",
@@ -134,7 +134,7 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
-      date = Sys.Date(),
+      date = lubridate::now(),
       event = "Qualidade do ar",
       code_muni = as.character(code_muni),
       title = "Alerta de qualidade do ar (IQAr)",
@@ -183,7 +183,7 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
-      date = Sys.Date(),
+      date = lubridate::now(),
       event = "Raios ultravioletas",
       code_muni = as.character(code_muni),
       title = "Alerta de raios ultravioletas",
@@ -231,7 +231,7 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
-      date = Sys.Date(),
+      date = lubridate::now(),
       event = "Altas temperaturas",
       code_muni = as.character(code_muni),
       title = "Alerta de temperaturas acima de 35°C",
@@ -281,7 +281,7 @@ collect_monitorar_saude <- function() {
     dplyr::mutate(dates = paste(unlist(dates), collapse = ", ")) |>
     dplyr::mutate(
       identifier = uuid::UUIDgenerate(),
-      date = Sys.Date(),
+      date = lubridate::now(),
       event = "Baixas temperaturas",
       code_muni = as.character(code_muni),
       title = "Alerta de temperaturas abaixo de 5°C",
