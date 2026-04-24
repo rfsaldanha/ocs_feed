@@ -28,8 +28,9 @@ write_feed <- function(
     xml2::xml_add_child(entry, "category", entries[[i]]$category)
     xml2::xml_add_child(entry, "event", entries[[i]]$event)
     xml2::xml_add_child(entry, "severity", entries[[i]]$severity)
-    xml2::xml_add_child(entry, "onset", entries[[i]]$onset)
-    xml2::xml_add_child(entry, "expires", entries[[i]]$expires)
+    xml2::xml_add_child(entry, "onset", 
+    entries[[i]]$onset)
+    xml2::xml_add_child(entry, "expires", as.character(entries[[i]]$expires)
     xml2::xml_add_child(entry, "title", entries[[i]]$title)
     xml2::xml_add_child(entry, "content", entries[[i]]$message)
   }

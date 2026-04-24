@@ -39,7 +39,11 @@ cli::cli_alert_success("MonitorAr Saúde collector done!")
 cli::cli_alert("Binding all entries...")
 entries <- tibble::tibble()
 entries <- dplyr::bind_rows(entries, monitorar_saude_entries, inmet_entries) |>
-  dplyr::mutate(date = as.character(date))
+  dplyr::mutate(
+    date = as.character(date),
+    onset = as.character(onset),
+    expires = as.character(expires)
+  )
 
 if (nrow(entries) == 0) {
   stop("No new entries")
