@@ -23,12 +23,15 @@ write_feed <- function(
   # Add an entry (post) to the feed
   for (i in 1:length(entries)) {
     entry <- xml2::xml_add_child(feed, "entry")
+    xml2::xml_add_child(entry, "id", entries[[i]]$identifier)
     xml2::xml_add_child(entry, "date", as.character(entries[[i]]$date))
+    xml2::xml_add_child(entry, "category", entries[[i]]$category)
     xml2::xml_add_child(entry, "event", entries[[i]]$event)
+    xml2::xml_add_child(entry, "severity", entries[[i]]$severity)
+    xml2::xml_add_child(entry, "onset", as.character(entries[[i]]$onset))
+    xml2::xml_add_child(entry, "expires", as.character(entries[[i]]$expires))
     xml2::xml_add_child(entry, "title", entries[[i]]$title)
     xml2::xml_add_child(entry, "content", entries[[i]]$message)
-    # xml2::xml_add_child(entry, "id", uuid::UUIDgenerate())
-    xml2::xml_add_child(entry, "id", entries[[i]]$identifier)
   }
 
   # Write the XML document to a file
