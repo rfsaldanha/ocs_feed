@@ -46,7 +46,7 @@ collect_monitorar_saude <- function() {
       message = glue::glue(
         "Estima-se que nos próximos cinco dias o município apresente concentrações de PM 2.5 acima dos valores recomendados pela Organização Mundial da Saúde (OMS) nas seguinte(s) data(s): {dates}.
         <br>
-        Acesse <a href='https://shiny.icict.fiocruz.br/monitorarsaude/' target='_blank'>MonitorAr Saúde</a> para mais detalhes.
+        Acesse <a href='https://shiny.icict.fiocruz.br/alertarsaude/' target='_blank'>AlertAr Saúde</a> para mais detalhes.
         <br>
         Recomendações para os serviços de saúde:
         <ul>
@@ -111,7 +111,7 @@ collect_monitorar_saude <- function() {
       message = glue::glue(
         "Estima-se que nos próximos cinco dias o município apresente concentrações de O3 (ozônio) acima dos valores recomendados pela Organização Mundial da Saúde (OMS) nas seguinte(s) data(s): {dates}.
         <br>
-        Acesse <a href='https://shiny.icict.fiocruz.br/monitorarsaude/' target='_blank'>MonitorAr Saúde</a> para mais detalhes.
+        Acesse <a href='https://shiny.icict.fiocruz.br/alertarsaude/' target='_blank'>AlertAr Saúde</a> para mais detalhes.
         <br>
         Recomendações para os serviços de saúde:
         <ul>
@@ -175,7 +175,7 @@ collect_monitorar_saude <- function() {
       message = glue::glue(
         "Estima-se que nos próximos cinco dias o município apresente o Índice de Qualidade do Ar (IQAr) com valores acima dos recomendados pelo CONAMA nas seguinte(s) data(s): {dates}.
         <br>
-        Acesse <a href='https://shiny.icict.fiocruz.br/monitorarsaude/' target='_blank'>MonitorAr Saúde</a> para mais detalhes.
+        Acesse <a href='https://shiny.icict.fiocruz.br/alertarsaude/' target='_blank'>AlertAr Saúde</a> para mais detalhes.
         <br>
         Recomendações para os serviços de saúde:
         <ul>
@@ -239,7 +239,7 @@ collect_monitorar_saude <- function() {
       message = glue::glue(
         "Estima-se que nos próximos cinco dias o município apresente o Índice de Raios Ultravioletas (IUV) com valores acima dos recomendados nas seguinte(s) data(s): {dates}.
         <br>
-        Acesse <a href='https://shiny.icict.fiocruz.br/monitorarsaude/' target='_blank'>MonitorAr Saúde</a> para mais detalhes.
+        Acesse <a href='https://shiny.icict.fiocruz.br/alertarsaude/' target='_blank'>AlertAr Saúde</a> para mais detalhes.
         <br>
         Recomendações para os serviços de saúde:
         <ul>
@@ -302,7 +302,7 @@ collect_monitorar_saude <- function() {
       message = glue::glue(
         "Estima-se que nos próximos cinco dias o município apresente temperaturas iguais ou acima de 35°C nas seguinte(s) data(s): {dates}.
         <br>
-        Acesse <a href='https://shiny.icict.fiocruz.br/monitorarsaude/' target='_blank'>MonitorAr Saúde</a> para mais detalhes.
+        Acesse <a href='https://shiny.icict.fiocruz.br/alertarsaude/' target='_blank'>AlertAr Saúde</a> para mais detalhes.
         <br>
         Recomendações para os serviços de saúde:
         <ul>
@@ -367,7 +367,7 @@ collect_monitorar_saude <- function() {
       message = glue::glue(
         "Estima-se que nos próximos cinco dias o município apresente temperaturas iguais ou abaixo de 5°C nas seguinte(s) data(s): {dates}.
         <br>
-        Acesse <a href='https://shiny.icict.fiocruz.br/monitorarsaude/' target='_blank'>MonitorAr Saúde</a> para mais detalhes.
+        Acesse <a href='https://shiny.icict.fiocruz.br/alertarsaude/' target='_blank'>AlertAr Saúde</a> para mais detalhes.
         <br>
         Recomendações para os serviços de saúde:
         <ul>
